@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+
+        div {
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            border-radius: 20px;
+            padding: 20px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #353535;
+        }
+    </style>
+    <title>ComponentsChildrenProps</title>
+</head>
+<body>
+    <div id="root"></div>
+		<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+	  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+	  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // Your React code will go here
+        function User ({name,age,email}) {
+           return (
+             <>
+               <h2>NAME : {name}</h2>
+               <h2>AGE : {age}</h2>
+               <h2>EMAIL : {email}</h2>
+             </>  
+           );
+        };
+
+        function ScoreCard () {
+            return (
+              <>
+                <h2>SCORE : 100</h2>
+              </>  
+            );
+        }
+
+        function ContainerWithBlueBorder (props) {
+            return (
+              <div style={{border:"5px solid blue"}}>
+                {props.children}
+              </div>  
+            );
+        }
+
+        function App () {
+            return (
+              <>
+                <ContainerWithBlueBorder>
+                    <User name="Noorulla" age="25" email="noorulla@gmail.com"/>
+                </ContainerWithBlueBorder>
+                <br/>
+                <ContainerWithBlueBorder>
+                    <ScoreCard/>
+                </ContainerWithBlueBorder>
+              </>  
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+</body>
+</html>
+
