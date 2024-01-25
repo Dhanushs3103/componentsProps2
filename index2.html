@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+
+        body {
+          background-color: aliceblue;
+        }
+
+
+        #main {
+            padding: 25px;
+            margin: 25px;
+            width: 25%;
+            text-align: center;
+            margin: auto;
+            margin-top: 200px;
+            border-radius: 20px;
+            background-color:azure;
+        }
+    </style>
+    <title>ComponentsChildrenProps</title>
+</head>
+<body>
+    <div id="root"></div>
+		<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+	  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+	  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // Your React code will go here
+        function User ({name,age,email}) {
+           return (
+             <>
+               <h2>NAME : {name}</h2>
+               <h2>AGE : {age}</h2>
+               <h2>EMAIL : {email}</h2>
+             </>  
+           );
+        };
+
+        function ScoreCard () {
+            return (
+              <>
+                <h2>SCORE : 100</h2>
+              </>  
+            );
+        }
+
+        function ContainerWithBlueBorder (props) {
+            return (
+              <div style={{border:"5px solid blue"}}>
+                {props.children}
+              </div>  
+            );
+        }
+
+        function Container ({children,borderColor}) {
+            return (
+              <div id="main" style={{border:`1px solid ${borderColor}`}}>
+                <>{children}</>
+              </div>  
+            );
+        }
+
+            let root = ReactDOM.createRoot(document.getElementById("root"))
+            root.render(<Container children={<><User name="Noorulla" age="23" email="Noorulla@gmail.com"/> <ScoreCard/></>} borderColor="violet"/>);
+
+            // root.render(<Container borderColor="red"><p> bokka </p></Container>);
+
+            // root.render(<Container borderColor="blue"><button> bokka </button></Container>);
+
+             // root.render(<Container borderColor="blue"><h3> mutton </h3></Container>);
+
+    </script>
+</body>
+</html>
+
